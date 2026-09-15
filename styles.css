@@ -991,20 +991,31 @@ button {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.3rem;
 }
 
 .team-card {
-  padding: 1.5rem 1.3rem;
+  padding: 1.6rem 1.25rem;
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(152, 218, 255, 0.26);
+  box-shadow: 0 22px 36px rgba(4, 12, 20, 0.46);
+}
+
+.member-avatar,
+.member-photo {
+  width: 6.2rem;
+  height: 6.2rem;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
 }
 
 .member-avatar {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1013,6 +1024,14 @@ button {
   color: var(--white);
   border: 1px solid rgba(155, 224, 255, 0.2);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.member-photo {
+  display: block;
+  object-fit: cover;
+  border: 1px solid rgba(155, 224, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  background: linear-gradient(135deg, rgba(124, 229, 255, 0.08), rgba(27, 109, 255, 0.12));
 }
 
 .member-avatar.cyan {
@@ -1032,20 +1051,21 @@ button {
 }
 
 .team-card h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.28rem;
 }
 
 .member-role {
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.85rem;
   color: var(--cyan);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .team-card p:last-child {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 18rem;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -1124,9 +1144,12 @@ button {
   .map-layout,
   .feature-grid,
   .timeline,
-  .levels-grid,
-  .team-grid {
+  .levels-grid {
     grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .timeline {
@@ -1203,6 +1226,10 @@ button {
   .secondary-button,
   .simulator-button {
     width: 100%;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
   }
 
   .panel-row {
